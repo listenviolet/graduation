@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="login">
+    <meta name="author" content="Liu Shiyu">
+
+	<title>Login</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	
+	<link href="../css/login.css" rel="stylesheet">
+
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	 <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../css/lib/jasny-bootstrap.min.css" rel="stylesheet">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/lib/jasny-bootstrap.min.js"></script>
+    <script src="../js/login_prof.js" type="text/javascript"></script>
+ 	<script src="../js/login_stu.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#">Homework Collecting System</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+  	<div class="login-wrap">
+		<div class="login-html">
+			<input id="tab-1" type="radio" name="tab" class="teacher" checked><label for="tab-1" class="tab">For Teacher</label>
+			<input id="tab-2" type="radio" name="tab" class="student"><label for="tab-2" class="tab">For Student</label>
+
+			<div class="login-form">
+				<form id="loginform_teacher" action="../php/login_0326.php" method="post">
+					<div class="teacher-htm">
+						<div class="group">
+							<label for="user_teacher" class="label">E-Mail</label>
+							<h6 id="result"></h6> 
+							<input id="vali_msg" type="hidden" name="vali_msg">
+							<input id="user_teacher" type="text" class="input" name="username">
+						</div>
+						<div class="group">
+							<label for="pass_teacher" class="label">Password</label>
+							<input id="pass_teacher" type="password" class="input" data-type="password" name="password">
+						</div>
+						<div class="group">
+							<input id="check_teacher" type="checkbox" class="check" checked>
+							<label for="check_teacher"><span class="icon"></span> Keep me Signed in</label>
+						</div>
+						<div class="group">
+							<input type="submit" class="button" value="enter">
+						</div>
+
+						<div class="hr"></div>
+						<div class="foot-lnk">
+							<a href="#forgot">Forgot Password?</a>
+						</div>
+					</div>
+				</form>
+
+				<form id="loginform_student" action="../php/stu_login_0402.php" method="post">
+					<div class="student-htm">
+						<div class="group">
+							<label for="user_student" class="label">E-Mail</label>
+							<input id="user_student" type="text" class="input" name="username">
+						</div>
+						<div class="group">
+							<label for="pass_student" class="label">Password</label>
+							<input id="pass_student" type="password" class="input" data-type="password" name="password">
+						</div>
+						<div class="group">
+							<input id="check_student" type="checkbox" class="check" checked>
+							<label for="check_student"><span class="icon"></span> Keep me Signed in</label>
+						</div>
+						<div class="group">
+							<input type="submit" class="button" value="enter">
+						</div>
+						<div class="foot-lnk">
+							<a href="#forgot">Forgot Password?</a>
+						</div>
+						<div class="hr"></div>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--section>
+		<div class="row">
+			<h1>Test upload</h1>
+			<div class="fileinput fileinput-new" data-provides="fileinput">
+				<span class="btn btn-default btn-file">
+					<span>Choose</span>
+					<input type="file"/>
+				</span>
+			</div>
+		</div>
+	</section-->
+
+	<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#services">Services</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; Liu Shiyu 2017. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  	<!-- jQuery -->
+    <script src="../js/lib/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/lib/bootstrap.min.js"></script>
+
+</body>
+</html>

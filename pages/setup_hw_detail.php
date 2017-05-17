@@ -1,0 +1,78 @@
+<?php 
+	session_start(); 
+	function isLoggedIn(){
+		if(isset($_SESSION['username'])){
+			return ture;
+		}
+		else{
+			return false;
+		}
+	}
+
+	if(isLoggedIn())
+	{
+		$classid=$_POST["classid"];
+		//echo $classid;
+	}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Set Up Homework</title>
+
+	<!--link and script-->
+    <?php include("./share/lib.html"); ?>
+
+    <meta name="description" content="setup_hw_detail">
+
+    <link href="../css/setup_hw_detail.css" rel="stylesheet">
+
+    <script src="../js/setup_hwdetail.js" type="text/javascript"></script>
+
+</head>
+<body lang="en">
+	<?php if(isLoggedIn()): ?>
+	<!-- Navigation -->
+    <?php include("./share/navigator.php"); ?>
+
+    <div class="hw-detail">
+    <input type="hidden" name="classid" id="classid" value=<?= $classid ?>>
+    	<div class="container">
+		    <div id="class_name"></div>
+		    <div class="container">
+			    <div class="hw-detail-existed">
+			    	
+			    </div>
+			    <div class="hw-detail-add">
+			    	<h4>Add new homeworks:</h4>
+				    <div>
+						<input type="button" class="btn btn-primary btn-lg" id="addhw" name="addhw" value="Add Homework" />
+					</div>
+					<div class="container">
+						<div id="homeworks" name="homeworks">
+						</div>
+					</div>
+				</div>
+			</div>
+            <button class="btn btn-default"><a href="./setup_hw.php"><i class="glyphicon glyphicon-backward"></i> Go Back To Classes List</button>
+		</div>    
+	</div>
+
+
+    
+	<!-- Footer -->
+    <?php include("./share/footer.html");?>
+
+    <!-- jQuery -->
+    <script src="../js/lib/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/lib/bootstrap.min.js"></script>
+
+	<?php else:?>
+	<script type="text/javascript">
+		window.location.href="../login/login.html";
+	</script>
+	<?php endif; ?>
+</body>
+</html>
