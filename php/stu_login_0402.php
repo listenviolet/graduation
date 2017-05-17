@@ -23,11 +23,6 @@
 	$result=$GLOBALS['db']->query($query);
 	
 	if(mysqli_num_rows($result)>0){
-
-		/*while($row=mysqli_fetch_assoc($result)){
-			$userid=$row["stu_id"];
-		}*/
-
 		$values=mysqli_fetch_object($result);
 		$hash=$values->password;
 

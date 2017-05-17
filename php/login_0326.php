@@ -19,10 +19,6 @@
 		$password=test_input($_POST["password"]);
 	}
 	
-	/*$query="select * from prof where "."'".$username."'"." = prof.email and "."'".$password."'"."= prof.password";
-	$result=$db->query($query);
-	echo $query;*/
-
 	$query="select * from prof where email='".$username."'";
 	$result=$GLOBALS['db']->query($query);
 
@@ -49,9 +45,7 @@
 				echo "</script>";
 			}
 		}
-		/*while($row=mysqli_fetch_assoc($result)){
-			$userid=$row["prof_id"];
-		}*/
+
 		else {
 			$url="../pages/index.html";
 			echo "<script type='text/javascript'>";
