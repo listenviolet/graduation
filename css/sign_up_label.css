@@ -106,7 +106,7 @@ p.copyright {
 .signup-form .group .button{
     width:100%;
     color:#333;
-    display:block;
+    
 }
 .signup-form .group .input,
 .signup-form .group .button{
@@ -122,6 +122,7 @@ p.copyright {
 .signup-form .group .label{
     color:#aaa;
     font-size:12px;
+    text-align:left;
 }
 .signup-form .group .button{
     

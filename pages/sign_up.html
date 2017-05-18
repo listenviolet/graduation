@@ -10,7 +10,7 @@
     <title>Sign Up</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     
-    <link href="../css/signup.css" rel="stylesheet">
+    <link href="../css/sign_up_label.css" rel="stylesheet">
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
      <!-- Custom Fonts -->
@@ -64,22 +64,24 @@
                     <div class="teacher-htm">
                         <div class="group">
                             <label for="email_teacher" class="label">E-Mail</label>
-                            <h6 id="result"></h6> 
-                            <input id="vali_msg" type="hidden" name="vali_msg">
+                            <span id="span_teacher_email" style="color:red ;font-weight:lighter" hidden>Please enter a valid email address!</span>
                             <input id="email_teacher" type="text" class="input" name="email">
                         </div>
                         <div class="group">
                             <label for="name_teacher" class="label">Name</label>
-                            <h6 id="result"></h6> 
-                            <input id="vali_msg" type="hidden" name="vali_msg">
+                            <span id="span_teacher_name" style="color:red ;font-weight:lighter" hidden>Please enter your real name!</span>
                             <input id="name_teacher" type="text" class="input" name="name">
                         </div>
                         <div class="group">
                             <label for="pass_teacher" class="label">Password</label>
+                            <span id="span_teacher_password_length" style="color:red ;font-weight:lighter" hidden>The password must have 6 to 10 characters!</span>
+                            <span id="span_teacher_password_special" style="color:red ;font-weight:lighter" hidden>The password can not contain special characters!</span>
+                            <span id="span_teacher_password_format" style="color:red ;font-weight:lighter" hidden>The password must contain at least one number and one letter!</span>
                             <input id="pass_teacher" type="password" class="input" data-type="password" name="password">
                         </div>
                         <div class="group">
                             <label for="pass_rp_teacher" class="label">Repeat Password</label>
+                            <span id="span_teacher_password_rp" style="color:red ;font-weight:lighter" hidden>Please enter the same password as above!</span>
                             <input id="pass_rp_teacher" type="password" class="input" data-type="password" name="rp_password">
                         </div>
                         
@@ -95,22 +97,24 @@
                     <div class="student-htm">
                         <div class="group">
                             <label for="email_student" class="label">E-Mail</label>
-                            <h6 id="result"></h6> 
-                            <input id="vali_msg" type="hidden" name="vali_msg">
+                            <span id="span_student_email" style="color:red ;font-weight:lighter" hidden>Please enter a valid email address!</span>
                             <input id="email_student" type="text" class="input" name="email">
                         </div>
                         <div class="group">
                             <label for="name_student" class="label">Name</label>
-                            <h6 id="result"></h6> 
-                            <input id="vali_msg" type="hidden" name="vali_msg">
+                            <span id="span_student_name" style="color:red ;font-weight:lighter" hidden>Please enter your real name!</span>
                             <input id="name_student" type="text" class="input" name="name">
                         </div>
                         <div class="group">
                             <label for="pass_student" class="label">Password</label>
+                            <span id="span_student_password_length" style="color:red ;font-weight:lighter" hidden>The password must have 6 to 10 characters!</span>
+                            <span id="span_student_password_special" style="color:red ;font-weight:lighter" hidden>The password can not contain special characters!</span>
+                            <span id="span_student_password_format" style="color:red ;font-weight:lighter" hidden>The password must contain at least one number and one letter!</span>
                             <input id="pass_student" type="password" class="input" data-type="password" name="password">
                         </div>
                          <div class="group">
                             <label for="pass_rp_student" class="label">Repeat Password</label>
+                            <span id="span_student_password_rp" style="color:red ;font-weight:lighter" hidden>Please enter the same password as above!</span>
                             <input id="pass_rp_student" type="password" class="input" data-type="password" name="rp_password">
                         </div>
                         
