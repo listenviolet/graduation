@@ -1,6 +1,9 @@
 $(document).ready(function(){
     var user_teacher=document.getElementById("user_teacher");
+    var span_teacher_email=document.getElementById("span_teacher_email");
+
     var pass_teacher=document.getElementById("pass_teacher");
+    var span_teacher_password_null=document.getElementById("span_teacher_password_null");
     
     function validateEmail(email) {
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -8,22 +11,23 @@ $(document).ready(function(){
     }
 
     function validate() {
-      var vali_msg=document.getElementById("vali_msg");
-      vali_msg.value="";
+      span_teacher_email.hidden=true;
       var email = user_teacher.value;
       console.log(email);
 
-      if (validateEmail(email)) {
-        user_teacher.style.color="black";
-      } else {
-        user_teacher.value="Not valid";
-        user_teacher.style.color="red";
+      if (validateEmail(email)==false) {
+        span_teacher_email.hidden=false;
       }
     }
 
-    function color(){
-      user_teacher.style.color="black";
+    function pass_validate(){
+      span_teacher_password_null.hidden=true;
+      var password=pass_teacher.value;
+      if(password==""){
+        span_teacher_password_null.hidden=false;
+      }
     }
+
     user_teacher.addEventListener("focusout",validate,false);
-    user_teacher.addEventListener("focusin",color,false);
+    pass_teacher.addEventListener("focusout",pass_validate,false);
 });

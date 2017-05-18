@@ -106,7 +106,6 @@ p.copyright {
 .login-form .group .button{
 	width:100%;
 	color:#333;
-	display:block;
 }
 .login-form .group .input,
 .login-form .group .button{
@@ -122,6 +121,7 @@ p.copyright {
 .login-form .group .label{
 	color:#aaa;
 	font-size:12px;
+
 }
 .login-form .group .button{
 	

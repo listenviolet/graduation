@@ -10,7 +10,7 @@
 	<title>Login</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 	
-	<link href="../css/login.css" rel="stylesheet">
+	<link href="../css/login_0518.css" rel="stylesheet">
 
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 	 <!-- Custom Fonts -->
@@ -20,7 +20,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
     <script src="../js/lib/jasny-bootstrap.min.js"></script>
     <script src="../js/login_prof.js" type="text/javascript"></script>
  	<script src="../js/login_stu.js" type="text/javascript"></script>
@@ -70,12 +70,12 @@
 					<div class="teacher-htm">
 						<div class="group">
 							<label for="user_teacher" class="label">E-Mail</label>
-							<h6 id="result"></h6> 
-							<input id="vali_msg" type="hidden" name="vali_msg">
+							<span id="span_teacher_email" style="color:red ;font-weight:lighter" hidden>Please enter a valid email address!</span>
 							<input id="user_teacher" type="text" class="input" name="username">
 						</div>
 						<div class="group">
 							<label for="pass_teacher" class="label">Password</label>
+							<span id="span_teacher_password_null" style="color:red ;font-weight:lighter" hidden>Please enter your password!</span>
 							<input id="pass_teacher" type="password" class="input" data-type="password" name="password">
 						</div>
 						<div class="group">
@@ -97,10 +97,12 @@
 					<div class="student-htm">
 						<div class="group">
 							<label for="user_student" class="label">E-Mail</label>
+							<span id="span_student_email" style="color:red ;font-weight:lighter" hidden>Please enter a valid email address!</span>
 							<input id="user_student" type="text" class="input" name="username">
 						</div>
 						<div class="group">
 							<label for="pass_student" class="label">Password</label>
+							<span id="span_student_password_null" style="color:red ;font-weight:lighter" hidden>Please enter your password!</span>
 							<input id="pass_student" type="password" class="input" data-type="password" name="password">
 						</div>
 						<div class="group">
