@@ -21,7 +21,7 @@
 
     <meta name="description" content="collect choose a class">
     <link href="../css/collect_classes.css" rel="stylesheet">
-    <script src="../js/collect_classes.js" type="text/javascript"></script>
+    <script src="../js/collect_class.js" type="text/javascript"></script>
     
 </head>
 <body>

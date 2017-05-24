@@ -37,7 +37,7 @@ $(document).ready(function(){
 		$("#class"+class_id).append("<label for='input"+class_id+"'>Class Name: </label>");
 		$("#class"+class_id).append("<input type='text' id='input"+class_id+"' name='input"+class_id+"' value='"+class_name+"' readOnly>");
 		$("#class"+class_id).append("<input type='hidden' id='classid"+class_id+"' name='classid' value='"+class_id+"'>");
-		$("#class"+class_id).append("<input class='btn btn-success' type='submit' id='enterclass"+class_id+"' name='enterclass"+class_id+"' value='Collect Homeworks'>");
+		$("#class"+class_id).append("<input class='btn btn-success' type='submit' id='enterclass"+class_id+"' name='enterclass"+class_id+"' value='Collect Homework'>");
 		$("#class"+class_id).append("<hr>");
 	}
 
