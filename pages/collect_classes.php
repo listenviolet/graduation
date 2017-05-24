@@ -30,12 +30,14 @@
     <?php include("./share/navigator.php"); ?>
 
     <div class="collect-class">
-		<h2>Choose Class:</h2>
-		<form id="collectclassForm" action="collect_hw.php" method="post" enctype="multipart/form-data">
-			<div id="collect_class">
-			</div>
-		</form>
-		<button class="btn btn-default"><a href="./set_collect.php"><i class="glyphicon glyphicon-backward"></i> Go Back To Operations</button>
+	    <div class="container">
+			<h2>Choose Class:</h2>
+			<form id="collectclassForm" action="collect_hw.php" method="post" enctype="multipart/form-data">
+				<div id="collect_class">
+				</div>
+			</form>
+			<button class="btn btn-default"><a href="./set_collect.php"><i class="glyphicon glyphicon-backward"></i> Go Back To Operations</button>
+		</div>
 	</div>
     <!--Footer-->
 	<?php include("./share/footer.html");?>

@@ -84,7 +84,7 @@ $(document).ready(function(){
 		var hr=document.createElement("hr");
 
 		var file_a=document.createElement("a");
-		file_a.className="btn btn-default btn-file";
+		file_a.className="btn btn-primary btn-file";
 		var file_span=document.createElement("span");
 		file_span.className="fileupload-new";
 		var file_text_span=document.createTextNode("Select File");

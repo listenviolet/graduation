@@ -178,6 +178,13 @@ $(document).ready(function(){
 			var filesize_div=document.createElement("div");
 			var upload=document.createElement("input");
 
+			var upload_a=document.createElement("a");
+			upload_a.className="btn btn-primary btn-file";
+			var upload_span=document.createElement("span");
+			upload_span.className="fileupload-new";
+			var upload_text_span=document.createTextNode("Choose file");
+			upload_span.appendChild(upload_text_span);
+
 			filetype_div.id=k+"filetype_div"+j;
 			filetype_div.name=k+"filetype_div"+j;
 			
@@ -203,7 +210,11 @@ $(document).ready(function(){
 			hw_file_div.appendChild(hw_file_id);
 			hw_file_div.appendChild(filetype_div);
 			hw_file_div.appendChild(filesize_div);
-			hw_file_div.appendChild(upload);
+
+			upload_a.appendChild(upload_span);
+			upload_a.appendChild(upload);
+			//hw_file_div.appendChild(upload);
+			hw_file_div.appendChild(upload_a);
 
 			hw_form.appendChild(hw_file_div);
 

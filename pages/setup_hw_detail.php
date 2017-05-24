@@ -16,7 +16,7 @@
 	}
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
 	<title>Set Up Homework</title>
 
@@ -44,7 +44,7 @@
 			    	
 			    </div>
 			    <div class="hw-detail-add">
-			    	<h4>Add new homeworks:</h4>
+			    	<h4>Add new homework:</h4>
 				    <div>
 						<input type="button" class="btn btn-primary btn-lg" id="addhw" name="addhw" value="Add Homework" />
 					</div>
