@@ -195,16 +195,16 @@ $(document).ready(function(){
 			showStuList(index,listinfo,dir_file);
 		});
 
-		$("#checkall"+dir_file).off("click").click(function(){
-			console.log("this.checked:");
-			console.log(this.checked);
-			$('input[name="hwfile'+dir_file+'"]').attr("checked",this.checked);
-			console.log("hwfile click:");
+		$("#checkall"+dir_file).click(function(){
+			var status=$(this).prop("checked");
+			console.log("status: "+status);
+			$('input[name="hwfile'+dir_file+'"]').prop("checked",status);
+			
 		});
 		var $hwfile=$("input[name='hwfile"+dir_file+"']");
 		$hwfile.click(function(){
 			console.log("hwfile click");
-			$("#checkall"+dir_file).attr("checked",$hwfile.length==$("input[name='hwfile"+dir_file+"']:checked").length ? true : false);
+			$("#checkall"+dir_file).prop("checked",$hwfile.length==$("input[name='hwfile"+dir_file+"']:checked").length ? true : false);
 		});
 
 		//$("#form_hw"+dir_file).append("<input id='download"+dir_file+"' type='button' class='btn btn-success' value='Download'>");
