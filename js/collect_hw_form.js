@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	var input_classid=document.getElementById("classid");
-	var classid=input_classid.value;
+	var input_classid=document.getElementById("classid"); //input element of the form, its value stored the class id
+	var classid=input_classid.value;                      
 	var hw_lists=document.getElementById("hw-lists");
 
 	function pageLoad(){
@@ -9,6 +9,7 @@ $(document).ready(function(){
 		getHwLists(processGetHwLists,errGetHwLists);
 	}
 
+	//Get the name of the chosen class
 	function getClassName(classid){
 		$.ajax({
 			type:"GET",
@@ -26,6 +27,7 @@ $(document).ready(function(){
 		});
 	}
 
+	//To get the students information and the path of the homework
 	function getHwLists(processGetHwLists,errGetHwLists){
 		$.ajax({
 			type:"GET",
@@ -40,6 +42,7 @@ $(document).ready(function(){
 		});
 	}
 
+	//Get the homework information of this class
 	function processGetHwLists(data){
 		var filename_array=JSON.parse(data);
 		var files_num=filename_array.length;
@@ -50,10 +53,11 @@ $(document).ready(function(){
 			var dir_file=filename.substring(0,filename.indexOf("."));
 		    console.log("processGetHwLists dir_file:"+dir_file);
 			loadXMLDoc(filename);	
-			//getStuList(classid,dir_file,processGetStuList,errGetStuList);
 		}
 	}
 
+	//Each homework information is stored in a XML file. 
+	//This function is to read the XML file.
 	function loadXMLDoc(filename) {
 		var xmlhttp = new XMLHttpRequest();
 	  	xmlhttp.onreadystatechange = function() {
@@ -68,6 +72,8 @@ $(document).ready(function(){
 	  	xmlhttp.send();
 	}
 
+	//Shows the information about the homework according to the XML file;
+	//Use collapse to have a better view.
 	function showHwName(xml,k){
 	  	xmlDoc = xml.responseXML;
 	  	var hwname=xmlDoc.getElementsByTagName("hwname")[0].childNodes[0].nodeValue;
@@ -104,18 +110,12 @@ $(document).ready(function(){
 		card_body.setAttribute("aria-labelledby","heading"+k);
 
 	  	var form_hw = document.createElement("form");
-	  	//var form_hw = document.createElement("div");
-		//var hw_name_h=document.createElement("h4");
-		//var hw_name_text=document.createTextNode(hwname);
-		//hw_name_h.appendChild(hw_name_text);
 		var label_starttime=document.createElement("label");
 		var label_deadline=document.createElement("label");
 		var input_starttime=document.createElement("input");
 		var input_deadline=document.createElement("input");
 		var download_list=document.createElement("input");
 
-		//form_hw.id="form_hw"+k;
-		//form_hw.className="container";
 		form_hw.id="form_hw"+k;
 		form_hw.action="../php/collect_download_form.php";
 		form_hw.method="post";
@@ -173,6 +173,8 @@ $(document).ready(function(){
 		});
 	}
 
+	//Get the student list of this class.
+	//Use a table element to show the students e-mail,name and the checkbox shows whether to choose and download one's homework or not.
 	function processGetStuList(data,dir_file){
 		console.log("success get stu list");
 		console.log("processGetStuList dir_file:"+dir_file);
@@ -193,7 +195,6 @@ $(document).ready(function(){
 			var status=$(this).prop("checked");
 			console.log("status: "+status);
 			$('input[name="hwfile'+dir_file+'"]').prop("checked",status);
-			
 		});
 		var $hwfile=$("input[name='hwfile"+dir_file+"']");
 		$hwfile.click(function(){
@@ -205,12 +206,9 @@ $(document).ready(function(){
 		$("#form_hw"+dir_file).append("<hr>");
 		$("#form_hw"+dir_file).submit(function(){
 			var downloadlist = [];
-			//alert("dir_file:"+dir_file);
 			$.each($("input[name='hwfile"+dir_file+"']:checked"),function(){
 				downloadlist.push($(this).val());
 			});
-			//alert("downloadlist:");
-			//alert(downloadlist);
 			$("#download_list"+dir_file).val(downloadlist);
 		});
 	}

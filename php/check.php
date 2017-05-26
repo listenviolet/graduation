@@ -25,6 +25,7 @@
 		echo "</script>";
 	}
 
+	//Search in the table certification to check whether the homework has been uploaded or not
 	function checkCode($code){
 		$check_result=array();
 		$student_id="";

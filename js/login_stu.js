@@ -5,11 +5,13 @@ $(document).ready(function(){
     var pass_student=document.getElementById("pass_student");
     var span_student_password_null=document.getElementById("span_student_password_null");
     
+    //E-mail format check
     function validateEmail(email) {
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     }
 
+    //To check the input e-mail
     function validate() {
       span_student_email.hidden=true;
       var email = user_student.value;
@@ -20,6 +22,7 @@ $(document).ready(function(){
       }
     }
 
+    //To check the input password
     function pass_validate(){
       span_student_password_null.hidden=true;
       var password=pass_student.value;

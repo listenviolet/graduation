@@ -16,6 +16,7 @@ $(document).ready(function(){
 		});
 	}
 
+	//Gets the classes information
 	function processGetClasses(data){
 		var classes=JSON.parse(data);
 		console.log("processGetClasses");
@@ -30,6 +31,7 @@ $(document).ready(function(){
 		console.log("error ajax");
 	}
 
+	//Shows the classes information
 	function showClasses(index,classinfo){
 		var class_id=classinfo.class_id;
 		var class_name=classinfo.class_name;
@@ -39,20 +41,6 @@ $(document).ready(function(){
 		$("#setupHW"+class_id).append("<input type='hidden' id='classid"+class_id+"' name='classid' value='"+class_id+"'>");
 		$("#setupHW"+class_id).append("<input class='btn btn-success' type='submit' id='submit"+class_id+"' name='submit"+class_id+"' value='Set Homework'>");
 		$("#setupHW"+class_id).append("<hr>");
-	}
-
-	function turntoHwDetail(class_id){
-		$.ajax({
-			type:"GET",
-			url:"../php/hw_detail.php",
-			data:{"classid":class_id},
-			success:function(data){
-				alert(data);
-			},
-			error:function(data){
-				errback(data);
-			}
-		});
 	}
 
 	pageLoad();

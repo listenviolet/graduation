@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	var i=1;
-	var classesid = new Array();
-	var deletelist = new Array();
+	var classesid = new Array();  //Stored the final classes ids
+	var deletelist = new Array(); //Stored the classes ids that chosen to be deleted
 	var class_num;
 	function pageLoad(){
 		getExistedClasses(processExistedClasses,errProcess);
@@ -25,6 +25,7 @@ $(document).ready(function(){
 		});
 	}
 
+	//Get the information of the existed classes
 	function processExistedClasses(data){
 		var existedClasses=JSON.parse(data);
 		console.log("success ajax");
@@ -33,7 +34,7 @@ $(document).ready(function(){
 			console.log("id: " + classinfo.class_id);
 			console.log("name: "+classinfo.class_name);
 			console.log("csv: "+ classinfo.class_csv);
-			addExistedClass(index,classinfo);
+			showExistedClass(index,classinfo);
 		});
 	}
 
@@ -41,29 +42,23 @@ $(document).ready(function(){
 		console.log("error ajax");
 	}
 
-
-	function addExistedClass(index,classinfo){
+	//To show the existed classes list
+	function showExistedClass(index,classinfo){
 		var class_id=classinfo.class_id;
 		var class_name=classinfo.class_name;
 		$("#existed").append("<div class='container' id='existed_div"+class_id+"'></div>");
 		$("#existed_div"+class_id).append("<label for='existed_class_id"+class_id+"'>Class Name: </label>");
 		$("#existed_div"+class_id).append("<input class='existed_classes_input' type='text' id='existed_class_id"+class_id+"' name='existed_class_id"+class_id+"' readOnly value="+class_name+"><br>");
-		$("#existed_div"+class_id).append("<input class='btn btn-default' type='button' id='button_view"+class_id+"' name='button_view"+class_id+"' value='View Students List'>");
-		//$("#existed_div"+index).append("<input type='file' id='button_update"+index+"' name='button_update"+index+"' value='Update'>");
+		//$("#existed_div"+class_id).append("<input class='btn btn-default' type='button' id='button_view"+class_id+"' name='button_view"+class_id+"' value='View Students List'>");
 		$("#existed_div"+class_id).append("<input class='btn btn-default' type='button' id='button_delete"+class_id+"' name='button_delete"+class_id+"' value='Delete'>");
 		$("#existed_div"+class_id).append("<hr>");
-		$("#button_view"+class_id).click(function(){
-			viewStu(class_id);
-		});
+		//$("#button_view"+class_id).click(function(){ viewStu(class_id); });
 		$("#button_delete"+class_id).click(function(){
 			deleteExist(class_id);
 		});
 	}
 
-	function viewStu(class_id){
-		alert("class_id");
-	}
-
+	//To delete the chosen class
 	function deleteExist(class_id){
 		alert("Delete");
 		deletelist.push(class_id);
@@ -72,6 +67,7 @@ $(document).ready(function(){
 		existed.removeChild(existed_div);	
 	}
 
+	//To add a new class
 	function addClass(){
 		var classes=document.getElementById("classes");
 		var div=document.createElement("div");
@@ -83,6 +79,7 @@ $(document).ready(function(){
 		var delClass=document.createElement("input");
 		var hr=document.createElement("hr");
 
+		//To show the upload file element in English
 		var file_a=document.createElement("a");
 		file_a.className="btn btn-primary btn-file";
 		var file_span=document.createElement("span");
@@ -92,7 +89,6 @@ $(document).ready(function(){
 		var label_csv=document.createElement("label");
 
 		div.id="class"+i;
-		//div.innerHTML="Class "+i+" ";
 		label.for="class_id"+i;
 		label.innerHTML=i+". Class Name :";
 		inputClass_id.type="text";

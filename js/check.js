@@ -1,9 +1,8 @@
-$(document).ready(function(){
-	
-	var button=document.getElementById("check");
-	var input_result=document.getElementById("input_result");
-	var download=document.getElementById("download");
-	var download_list=document.getElementById("download_list");
+$(document).ready(function(){	
+	var button=document.getElementById("check");                 //button
+	var input_result=document.getElementById("input_result");    //the value of this input element shows whether the homework exists or not
+	var download=document.getElementById("download");            //submit button
+	var download_list=document.getElementById("download_list");  //to submit the download paths to php
 
 	function pageLoad(){
 		button.addEventListener("click",function(){
@@ -13,6 +12,8 @@ $(document).ready(function(){
 		});
 	}
 
+	//Check whether the homework exists or not and show the result
+	//If exists, push the homework path to downloadlist array
 	function checkCode(code){
 		$.ajax({
 			type:"GET",

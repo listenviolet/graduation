@@ -26,28 +26,32 @@ $(document).ready(function(){
 		});
 	}
 
+	//Each homework requires one or several files to be uploaded
+	//Each file has the limitations about the maximum size and the type 
 	function processGetFileInfo(data){
 		var filename_array=JSON.parse(data);
 		var files_num=filename_array.length; //homework sum
 		var Maximum=10;
+		//Use 2D array to discribe
+		//The first dimension discribes the homework number
+		//The second dimension discribe the file number in this homework
 		for(var arr_i=0;arr_i<files_num;arr_i++){
 			filesType[arr_i]=new Array();
 			filesSize[arr_i]=new Array();
 			for(var arr_j=0;arr_j<Maximum;arr_j++){
 				filesType[arr_i][arr_j]="";
-				filesSize[arr_i][arr_j]="";
+				filesSize[arr_i][arr_j]="";   
 			}
 		}
 		var i;
 		for(i=0;i<files_num;i++){
 			//html---------------
-			var k=-1;
-			//console.log("in for:i:"+i);
+			var k=-1; //Use k to describe the homework number of this class
+			//Send the XML request to read and praise the XML file
 			var xhttp=new XMLHttpRequest();
 			xhttp.onreadystatechange=function(){
 				console.log("onreadystatechange i:"+i);
 				if(this.readyState==4 && this.status==200){
-					//++k;
 					console.log("k:"+k);
 					praiseXML(this,++k,filename_array);
 				}
@@ -66,6 +70,7 @@ $(document).ready(function(){
 		console.log("err ajax");
 	}
 	
+	//Check whether the uploaded file meets the requirements
 	function checkFile(uploadid){
 		var upload_ele=document.getElementById(uploadid);
 		var curr_filesize=upload_ele.files[0].size;
@@ -92,6 +97,7 @@ $(document).ready(function(){
 		}
 	}
 
+	//Praise the XML file and get the requirements of the files needed to be uploaded
 	function praiseXML(xml,k,filename_array){	
 		console.log("in praise");
 		var xmlDoc=xml.responseXML;

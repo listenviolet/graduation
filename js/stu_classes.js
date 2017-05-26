@@ -17,6 +17,7 @@ $(document).ready(function(){
 		});
 	}
 
+	//Get the classes information
 	function processStuClasses(data){
 		var stuClasses=JSON.parse(data);
 		console.log("success ajax");
@@ -32,6 +33,7 @@ $(document).ready(function(){
 		alert("Error ajax.");
 	}
 
+	//Show the classes list and choose a class to submit the homework
 	function showStuClass(index,classinfo){
 		var class_id=classinfo.class_id;
 		var class_name=classinfo.class_name;
@@ -41,20 +43,6 @@ $(document).ready(function(){
 		$("#stu_class"+class_id).append("<input type='hidden' id='classid"+class_id+"' name='classid' value='"+class_id+"'>");
 		$("#stu_class"+class_id).append("<input class='btn btn-success' type='submit' id='enterclass"+class_id+"' name='enterclass"+class_id+"' value='View Homeworks'>");
 		$("#stu_class"+class_id).append("<hr>");
-	}
-
-	function turntoUploadHw(class_id){
-		$.ajax({
-			type:"GET",
-			url:"../pages/stu_class_hw.php",
-			data:{"classid":class_id},
-			success:function(data){
-				alert(data);
-			},
-			error:function(data){
-				errback(data);
-			}
-		});
 	}
 
 	pageLoad();

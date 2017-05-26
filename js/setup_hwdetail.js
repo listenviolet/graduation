@@ -11,6 +11,7 @@ $(document).ready(function(){
 		addhw.onclick=addHW;
 	}
 
+	//Shows the class name in h2 element
 	function getClassName(classid){
 		$.ajax({
 			type:"GET",
@@ -29,9 +30,10 @@ $(document).ready(function(){
 		});
 	}
 
+	//Add classes
+	//Use collapse to have a better view
 	function addHW(){	
 		var j=1;//file number	
-		//var file_num;	
 		var filesid = new Array();
 
 		var homeworks=document.getElementById("homeworks");
@@ -178,6 +180,8 @@ $(document).ready(function(){
 		card.appendChild(card_body);
 		homeworks.appendChild(card);
 
+		//A homework may request several files to be uploaded.
+		//Click add file button to add files requirements.
 		add_file.onclick=function addFile(){
 			var k=i-1;
 
@@ -298,6 +302,7 @@ $(document).ready(function(){
 		i=i+1;
 	}
 
+	//Send the homework requirements to php file and save the requirements in a XML file
 	function processSaveHw(classid,hw_id,hw_name,hw_starttime,hw_deadline,filesid){
 		var files_length=filesid.length;
 		var file_info=new Array();
