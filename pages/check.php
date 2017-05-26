@@ -46,12 +46,15 @@
         <hr>
         <div class="container">
             <div id="result" name="result" class="col-lg-6">
-                <div class="input-group">
-                    <input type="text" id="input_result" class="form-control" readonly="true" placeholder="Result...">
-                    <span class="input-group-btn">
-                        <input type="button" class="btn btn-success" name="download" id="download" value="Download" disabled>
-                    </span>
-                </div>
+                <form id="check_download" method="post" action="../php/collect_download_form.php" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <input type="text" id="input_result" class="form-control" readonly="true" placeholder="Result...">
+                        <input type="text" name="download_list" id="download_list" name="download_list" hidden>
+                        <span class="input-group-btn">
+                            <input type="submit" class="btn btn-success" name="download" id="download" value="Download" disabled>
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

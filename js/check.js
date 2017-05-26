@@ -3,6 +3,8 @@ $(document).ready(function(){
 	var button=document.getElementById("check");
 	var input_result=document.getElementById("input_result");
 	var download=document.getElementById("download");
+	var download_list=document.getElementById("download_list");
+
 	function pageLoad(){
 		button.addEventListener("click",function(){
 			var check_input=document.getElementById("check_input");
@@ -28,7 +30,7 @@ $(document).ready(function(){
 					$("#download").prop("disabled",false);
 					$("#download").click(function(){
 						downloadlist.push(hw_path);
-						downloadHw(code,downloadlist);
+						downloadHw(downloadlist);
 					});
 				}
 				else if(check_result==0){
@@ -42,21 +44,8 @@ $(document).ready(function(){
 		});
 	}
 
-	function downloadHw(code,downloadlist){
-		$.ajax({
-			type:"GET",
-			data:{"download_list":downloadlist},
-			url:"../php/collect_download.php",
-			success:function(data){
-				var flag_info=JSON.parse(data);
-					//alert(flag_info[0].flag);
-					if(flag_info[0].flag==1){alert("Download successfully.");}
-					else if(flag_info[0].flag==0){alert("Fail to download.");}
-			},
-			error:function(){
-				alert("Error ajax!");
-			}
-		});
+	function downloadHw(downloadlist){
+		download_list.value=downloadlist;
 	}
 
 	pageLoad();

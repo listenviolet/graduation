@@ -120,12 +120,7 @@ $(document).ready(function(){
 		form_hw.action="../php/collect_download_form.php";
 		form_hw.method="post";
 		form_hw.enctype="multipart/form-data";
-		//form_hw.onsubmit="function(){getDownloadList(k)}";
-		//form_hw.onsubmit="function(){myFunction()}";
-		//form_hw.addEventListener('submit',myFunction(k));
-		function myFunction(k){
-			alert("onsubmit"+k);
-		}
+		
 		label_starttime.for="starttime"+k;
 		label_starttime.innerHTML="Starttime :";
 
@@ -146,7 +141,6 @@ $(document).ready(function(){
 		download_list.name="download_list";
 		download_list.type="hidden";
 
-		//form_hw.appendChild(hw_name_h);
 		form_hw.appendChild(label_starttime);
 		form_hw.appendChild(input_starttime);
 		form_hw.appendChild(label_deadline);
@@ -207,27 +201,18 @@ $(document).ready(function(){
 			$("#checkall"+dir_file).prop("checked",$hwfile.length==$("input[name='hwfile"+dir_file+"']:checked").length ? true : false);
 		});
 
-		//$("#form_hw"+dir_file).append("<input id='download"+dir_file+"' type='button' class='btn btn-success' value='Download'>");
 		$("#form_hw"+dir_file).append("<button type='submit' id='download"+dir_file+"' class='btn btn-success'>"+"<i class='glyphicon glyphicon-download'></i> Download</button>");
 		$("#form_hw"+dir_file).append("<hr>");
 		$("#form_hw"+dir_file).submit(function(){
 			var downloadlist = [];
-			alert("dir_file:"+dir_file);
+			//alert("dir_file:"+dir_file);
 			$.each($("input[name='hwfile"+dir_file+"']:checked"),function(){
 				downloadlist.push($(this).val());
 			});
-			alert("downloadlist:");
-			alert(downloadlist);
+			//alert("downloadlist:");
+			//alert(downloadlist);
 			$("#download_list"+dir_file).val(downloadlist);
 		});
-	}
-
-	function getDownloadList(dir_file){
-		$.each($("input[name='hwfile"+dir_file+"']:checked"),function(){
-			downloadlist.push($(this).val());
-		});
-		console.log("downloadlist:");
-		alert(downloadlist);
 	}
 
 	function showStuList(index,listinfo,dir_file){
