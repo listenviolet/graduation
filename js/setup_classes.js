@@ -3,6 +3,7 @@ $(document).ready(function(){
 	var classesid = new Array();  //Stored the final classes ids
 	var deletelist = new Array(); //Stored the classes ids that chosen to be deleted
 	var class_num;
+	var form=document.getElementById("setupClasses");
 	function pageLoad(){
 		getExistedClasses(processExistedClasses,errProcess);
 
@@ -10,7 +11,10 @@ $(document).ready(function(){
 		add.onclick=addClass;
 
 		var submit=document.getElementById("submit");
-		submit.onclick=classesArray;
+		//submit.onclick=classesArray;
+		$(form).on('submit',function(){
+			return classesArray();
+		});
 	}
 	function getExistedClasses(callback,errback){
 		$.ajax({
@@ -92,6 +96,7 @@ $(document).ready(function(){
 		label.for="class_id"+i;
 		label.innerHTML=i+". Class Name :";
 		inputClass_id.type="text";
+		inputClass_id.class="class_id";
 		inputClass_id.name="class_id"+i;
 		inputClass_id.id="class_id"+i;
 
@@ -106,8 +111,67 @@ $(document).ready(function(){
 		inputClass_csv.id="class_csv"+i;
 		inputClass_csv.className="file-input";
 
+		$(inputClass_csv).on('change',function(){
+			console.log("onchange!");
+			fileChange(this);
+		});
+
+		//Check file type and file size
+		var isIE = /msie/i.test(navigator.userAgent) && !window.opera; 
+		function fileChange(target,id) {
+			var fileSize = 0; 
+			var filetypes =[".csv"]; 
+			var filepath = target.value; 
+			var filemaxsize = 1024;//1M 
+			if(filepath){ 
+				var isnext = false; 
+				var fileend = filepath.substring(filepath.indexOf(".")); 
+				if(filetypes && filetypes.length>0){ 
+					for(var i =0; i<filetypes.length;i++){ 
+						if(filetypes[i]==fileend){ 
+							isnext = true; 
+							break; 
+						} 
+					} 
+				} 
+				if(!isnext){ 
+					alert("Please upload a csv file."); 
+					target.value =""; 
+					return false; 
+				} 
+			}else{ 
+				return false; 
+			} 
+			if (isIE && !target.files) { 
+				var filePath = target.value; 
+				var fileSystem = new ActiveXObject("Scripting.FileSystemObject"); 
+				if(!fileSystem.FileExists(filePath)){ 
+					alert("File doesn't exist.Please upload again."); 
+					return false; 
+				} 
+				var file = fileSystem.GetFile (filePath); 
+				fileSize = file.Size; 
+			} else { 
+				fileSize = target.files[0].size; 
+			} 
+
+			var size = fileSize / 1024; 
+			if(size>filemaxsize){ 
+				alert("The maximum size is "+filemaxsize/1024+"M!"); 
+				target.value =""; 
+				return false; 
+			} 
+			if(size<=0){ 
+				alert("The file can not be empty!"); 
+				target.value =""; 
+				return false; 
+			} 
+		}
+
 		file_a.appendChild(file_span);
 		file_a.appendChild(inputClass_csv);
+
+
 
 		delClass.type="button";
 		delClass.value="Delete";
@@ -142,13 +206,29 @@ $(document).ready(function(){
 	}
 
 	function classesArray(){
-		var classarray=document.getElementById("classarray");
-		classarray.value=classesid;
-		console.log(classesid);
+		alert("on submit");
+		var flag=1;
+		$("input[class='class_id']").each(function(){
+			if(this.value==""){
+				alert("The class name can not be empty!");
+				location.reload();
+				flag=0;
+			}
+		});
 
-		var deletearray = document.getElementById("deletearray");
-		deletearray.value=deletelist;
-		console.log(deletelist);
+		if(flag==0) return false;
+		else {
+			var classarray=document.getElementById("classarray");
+			classarray.value=classesid;
+			alert("classesid:"+classesid);
+			console.log(classesid);
+
+			var deletearray = document.getElementById("deletearray");
+			deletearray.value=deletelist;
+			console.log(deletelist);
+			//form.action="../php/setupDB_classes_form.php";
+			return true;
+		}	
 	}
 
 	pageLoad();

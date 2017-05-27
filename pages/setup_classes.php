@@ -33,7 +33,7 @@
         <div class="container">
             <h2>Set Up Classes</h2>
     		<div class="container">
-    			<form id="setupClasses"  action="../php/setupDB_classes_form.php" method="post" enctype="multipart/form-data">
+    			<form id="setupClasses" action="../php/setupDB_classes_form.php" method="post" enctype="multipart/form-data">
     				<div class="existed-part" id="existed">
                         <h4>The existed classes:</h4>
     				</div>

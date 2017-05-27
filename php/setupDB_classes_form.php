@@ -95,8 +95,6 @@
 					$result_insertclass=$GLOBALS['db']->query($query_insertclass);
 					$class_id=mysqli_insert_id($db);
 					$classes=$classes.$class_id.",";
-
-
 				}
 				
 				else {
