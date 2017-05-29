@@ -71,7 +71,7 @@
 
 	<?php else:?>
 	<script type="text/javascript">
-		window.location.href="../login/login.html";
+		window.location.href="./login.html";
 	</script>
 	<?php endif; ?>
 </body>

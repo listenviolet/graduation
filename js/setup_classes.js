@@ -11,7 +11,6 @@ $(document).ready(function(){
 		add.onclick=addClass;
 
 		var submit=document.getElementById("submit");
-		//submit.onclick=classesArray;
 		$(form).on('submit',function(){
 			return classesArray();
 		});
@@ -34,10 +33,6 @@ $(document).ready(function(){
 		var existedClasses=JSON.parse(data);
 		console.log("success ajax");
 		$.each(existedClasses,function(index,classinfo){
-			console.log(index);
-			console.log("id: " + classinfo.class_id);
-			console.log("name: "+classinfo.class_name);
-			console.log("csv: "+ classinfo.class_csv);
 			showExistedClass(index,classinfo);
 		});
 	}
@@ -51,10 +46,14 @@ $(document).ready(function(){
 		var class_id=classinfo.class_id;
 		var class_name=classinfo.class_name;
 		$("#existed").append("<div class='container' id='existed_div"+class_id+"'></div>");
-		$("#existed_div"+class_id).append("<label for='existed_class_id"+class_id+"'>Class Name: </label>");
-		$("#existed_div"+class_id).append("<input class='existed_classes_input' type='text' id='existed_class_id"+class_id+"' name='existed_class_id"+class_id+"' readOnly value="+class_name+"><br>");
+		$("#existed_div"+class_id).append("<label for='existed_class_id"+class_id+"'>Class Name: </label>"); //class name
+		$("#existed_div"+class_id).append("<input class='existed_classes_input' type='text' id='existed_class_id"+class_id+"' name='existed_class_id"+class_id+"' readOnly value="+class_name+">");
 		//$("#existed_div"+class_id).append("<input class='btn btn-default' type='button' id='button_view"+class_id+"' name='button_view"+class_id+"' value='View Students List'>");
 		$("#existed_div"+class_id).append("<input class='btn btn-default' type='button' id='button_delete"+class_id+"' name='button_delete"+class_id+"' value='Delete'>");
+		/*
+		**collapse show student list and delete or add students
+		*/
+
 		$("#existed_div"+class_id).append("<hr>");
 		//$("#button_view"+class_id).click(function(){ viewStu(class_id); });
 		$("#button_delete"+class_id).click(function(){
@@ -171,8 +170,6 @@ $(document).ready(function(){
 		file_a.appendChild(file_span);
 		file_a.appendChild(inputClass_csv);
 
-
-
 		delClass.type="button";
 		delClass.value="Delete";
 		delClass.name="class_del";
@@ -181,13 +178,8 @@ $(document).ready(function(){
 		//$("#"+delClass.id).addClass("btn btn-default btn-lg");
 		delClass.onclick=function classDel() {
 			alert("Delete class"+inputClass_id.id);
-			console.log(inputClass_id.id);
-
 			var del_index=classesid.indexOf(inputClass_id.id);
-			console.log(del_index);
 			classesid.splice(del_index,1);
-			console.log(classesid);
-			
 			classes.removeChild(div);
 		};
 
@@ -206,7 +198,6 @@ $(document).ready(function(){
 	}
 
 	function classesArray(){
-		alert("on submit");
 		var flag=1;
 		$("input[class='class_id']").each(function(){
 			if(this.value==""){
@@ -220,13 +211,11 @@ $(document).ready(function(){
 		else {
 			var classarray=document.getElementById("classarray");
 			classarray.value=classesid;
-			alert("classesid:"+classesid);
 			console.log(classesid);
 
 			var deletearray = document.getElementById("deletearray");
 			deletearray.value=deletelist;
 			console.log(deletelist);
-			//form.action="../php/setupDB_classes_form.php";
 			return true;
 		}	
 	}

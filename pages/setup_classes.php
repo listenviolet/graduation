@@ -47,7 +47,7 @@
     				</div>
                     
     				<div> 
-    					<input type="submit" name="submit" id="submit" value="submit" class="btn btn-success">
+    					<input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success">
     				</div>
     				<div hidden>
                         <input type="text" id="deletearray" name="deletearray">
@@ -73,7 +73,7 @@
 
 	<?php else:?>
 	<script type="text/javascript">
-		window.location.href="../login/login.html";
+		window.location.href="./login.html";
 	</script>
 	<?php endif; ?>
 </body>

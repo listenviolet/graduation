@@ -185,15 +185,11 @@ $(document).ready(function(){
 
 		var stu_list=JSON.parse(data);
 		$.each(stu_list,function(index,listinfo){
-			console.log("email: "+listinfo.email);
-			console.log("name: "+listinfo.name);
-			console.log("hwpath: "+listinfo.hwpath);
 			showStuList(index,listinfo,dir_file);
 		});
 
 		$("#checkall"+dir_file).click(function(){
 			var status=$(this).prop("checked");
-			console.log("status: "+status);
 			$('input[name="hwfile'+dir_file+'"]').prop("checked",status);
 		});
 		var $hwfile=$("input[name='hwfile"+dir_file+"']");
