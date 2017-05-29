@@ -53,13 +53,92 @@ $(document).ready(function(){
 		/*
 		**collapse show student list and delete or add students
 		*/
+		
+		$("#existed_div"+class_id).append("<div class='card' id='card"+class_id+"'></div>");		
+		$("#card"+class_id).append("<div class='card-header' role='tab' id='heading"+class_id+"'></div>");
+		$("#heading"+class_id).append("<h5 class='mb-0' id='h5"+class_id+"'></h5>");
+		$("#h5"+class_id).append("<a data-toggle='collapse' data-parent='#existed_div"+class_id+"' href='#collapse"+class_id+"' aria-expanded='false' aria-controls='collapse"+class_id+"'>Show Student List</a>");
+		$("#card"+class_id).append("<div id='collapse"+class_id+"' class='collapse' role='tabpanel' aria-labelledby='heading"+class_id+"'></div>");
+		$("#collapse"+class_id).append("<div id='edit_stu_div"+class_id+"' class='container'></div>");
+		$("#edit_stu_div"+class_id).append("<table id='table"+class_id+"' class='table table-responsive'></table>");
+		$("#table"+class_id).append("<tr><th>#</th><th>E-Mail</th><th>Name</th><th>Edit</th></tr>");
+	
+		getExistedStu(class_id,processGetExistedStu,errGetExistedStu);
 
 		$("#existed_div"+class_id).append("<hr>");
 		//$("#button_view"+class_id).click(function(){ viewStu(class_id); });
 		$("#button_delete"+class_id).click(function(){
 			deleteExist(class_id);
 		});
+
+		function getExistedStu(classid,processGetExistedStu,errGetExistedStu){
+			$.ajax({
+				type:"GET",
+				data:{"class_id":classid},
+				url:"../php/setup_get_stulist.php",
+				success:function(data){
+					processGetExistedStu(data,classid);
+				},
+				error:function(){
+					errGetExistedStu();
+				}
+			});
+		}
+
+		function processGetExistedStu(data,classid){
+			var stu_list=JSON.parse(data);
+			console.log("processGetExistedStu classid: "+classid);
+			$.each(stu_list,function(index,listinfo){
+				var email=listinfo.email;
+				var name=listinfo.name;
+				$("#table"+class_id).append("<tr id='"+classid+"tr"+index+"'><td>"+(index+1)+"</td><td>"+email+"</td><td>"+name+"</td><td><input type='button' name='deleteStu"+classid+"' value='Delete' class='btn btn-danger' id='"+classid+"deleteStu"+index+"'></td></tr>");
+				//
+				$("#"+classid+"deleteStu"+index).click(function(){
+					deleteStu(classid,email);
+					deleteCSV(classid,email,name);
+					$(this).prop('disabled',true);
+				});
+			});
+
+			function deleteStu(classid,email){
+				$.ajax({
+					type:"GET",
+					data:{"class_id":classid,"email":email},
+					url:"../php/setup_delete_stu.php",
+					success:function(data){
+						var result=JSON.parse(data);
+						if(result==1) alert("Delete "+email+" from the class.");
+						if(result==0) alert("Error deleting.");
+					},
+					error:function(){
+						alert("Error ajax in delete student.");
+					}
+				});
+			}
+
+			function deleteCSV(classid,email,name){
+				$.ajax({
+					type:"GET",
+					data:{"class_id":classid,"email":email,"name":name},
+					url:"../php/setup_delete_csv.php",
+					success:function(data){
+						var result=JSON.parse(data);
+						if(result==1) alert("Delete "+email+" from the class.");
+						if(result==0) alert("Error deleting.");
+					},
+					error:function(){
+						alert("Error ajax in delete student.");
+					}
+				});
+			}
+		}
+
+		function errGetExistedStu(){
+			alert("Can not get student list.");
+		}
 	}
+
+	
 
 	//To delete the chosen class
 	function deleteExist(class_id){
